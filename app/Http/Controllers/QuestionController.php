@@ -15,7 +15,10 @@ class QuestionController extends Controller
 	public function index()
 	{
 		// go to the model and get agroup of records
-		$questions = Question::all();
+		// $questions = Question::all();
+		// $questions = Question::simplePaginate(5);
+		$questions = Question::orderBy('id', 'DESC')->paginate(5);
+		
 
 		// return the view, and pass in the group of records to loop through
 		return view('questions.index')->with('questions', $questions);
